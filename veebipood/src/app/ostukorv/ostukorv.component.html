@@ -1,0 +1,11 @@
+<button *ngIf="tooted.length > 0" (click)="tyhjenda()">Tühjenda</button>
+
+<div *ngFor="let t of tooted">
+  <div>Toode nimi: {{t.nimi}} </div>
+  <div>Toode hind: {{t.hind}}</div>
+  <div>Kategooria: coca</div>
+  <button (click)="lisa(t)">+</button>
+  <button (click)="eemalda(t)">X</button>
+</div>
+
+<div *ngIf="tooted.length > 0">{{sumOfCart}}</div>

@@ -1,0 +1,23 @@
+<!-- <div>{{ string }}</div>
+<div>{{ numbriline }}</div>
+<div>{{ kahendV22rtus }}</div>
+<br>
+<div>{{ string + string }}</div>
+<div>{{ string + numbriline }}</div>
+<div>{{ numbriline + numbriline }}</div>
+<div>{{ string + kahendV22rtus }}</div>
+
+<button (click)="korrutaKahega()">Korruta number kahega</button>
+
+<div *ngIf="numbriline > 500">SEDA NÄIDATAKSE SIIS KUI NUMBER ON SUUREM KUI 500</div>
+
+<div *ngIf="string">SEDA NÄIDATAKSE SIIS KUI SÕNA ON OLEMAS</div>
+
+<div *ngIf="numbriline">SEDA NÄIDATAKSE SIIS KUI NUMBER ON OLEMAS</div> -->
+
+<div *ngFor="let t of tooted">
+  <div>Toode nimi: {{t.nimi}} </div>
+  <div>Toode hind: {{t.hind}}</div>
+  <div>Kategooria: coca</div>
+  <button (click)="lisaOstukorvi(t)">LISA {{t.nimi}} OSTUKORVI</button>
+</div>
