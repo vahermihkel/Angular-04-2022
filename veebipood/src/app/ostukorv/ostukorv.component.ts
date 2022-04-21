@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,7 +16,7 @@ export class OstukorvComponent implements OnInit {
   ];
   sumOfCart = 0;
 
-  constructor() { 
+  constructor(private http: HttpClient) { 
     console.log("ostukorv constructor käivitus");
   }
 
@@ -44,6 +45,26 @@ export class OstukorvComponent implements OnInit {
     this.sumOfCart = 0;
     this.tooted.forEach(element => 
       this.sumOfCart += element.hind);
+  }
+
+  maksma() {
+    const makseAndmed = {
+      "api_username": "92ddcfab96e34a5f",
+      "account_name": "EUR3D1",
+      "amount": this.sumOfCart,
+      "order_reference": Math.random()*999999,
+      "nonce": "qwe" + Math.random()*999999 + new Date(),
+      "timestamp": new Date(),
+      "customer_url": "https://people-afb31.web.app"
+      };
+
+    const headers = {
+      headers: new HttpHeaders({"Authorization":"Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA=="})
+    }
+
+    this.http.post<any>("https://igw-demo.every-pay.com/api/v4/payments/oneoff", 
+      makseAndmed,
+      headers).subscribe(tagastus => location.href = tagastus.payment_link);
   }
 
 }

@@ -1,0 +1,9 @@
+<form (ngSubmit)="lisa(lisamiseVorm)" #lisamiseVorm="ngForm">
+  <label for="">Toote nimi</label> <br>
+  <input ngModel name="nimi" type="text" required> <br>
+  <label for="">Toote hind</label> <br>
+  <input ngModel name="hind" type="text" required> <br>
+  <label for="">Toote kategooria</label> <br>
+  <input ngModel name="kategooria" type="text" required> <br>
+  <button [disabled]="lisamiseVorm.invalid">LISA</button> <br>
+</form>

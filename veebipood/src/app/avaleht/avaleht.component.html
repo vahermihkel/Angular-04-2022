@@ -16,8 +16,11 @@
 <div *ngIf="numbriline">SEDA NÄIDATAKSE SIIS KUI NUMBER ON OLEMAS</div> -->
 
 <div *ngFor="let t of tooted">
-  <div>Toode nimi: {{t.nimi}} </div>
-  <div>Toode hind: {{t.hind}}</div>
-  <div>Kategooria: coca</div>
+  <div routerLink="/toode/{{t.nimi.toLowerCase().replace('õ','o').replace(' ','-')}}">
+    <div>Toode nimi: {{t.nimi}} </div>
+    <div>Toode hind: {{t.hind}}</div>
+    <div>Kategooria: coca</div>
+  </div>
   <button (click)="lisaOstukorvi(t)">LISA {{t.nimi}} OSTUKORVI</button>
+  <button (click)="kustuta(t)">X</button>
 </div>
